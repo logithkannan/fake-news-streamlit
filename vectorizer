@@ -1,9 +1,7 @@
 import joblib
 
-
 joblib.dump(model, 'logistic_model.pkl')
 joblib.dump(vectorizer, 'tfidf_vectorizer.pkl')
-
 
 from google.colab import files
 files.download('logistic_model.pkl')
