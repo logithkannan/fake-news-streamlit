@@ -24,6 +24,9 @@ print("\nLabel Distribution:\n", df['label'].value_counts())
 # Step 4: Preprocess
 df = df[['text', 'label']].dropna()
 
+
+
+
 # Encode labels: FAKE -> 0, REAL -> 1
 df['label'] = df['label'].map({'FAKE': 0, 'REAL': 1})
 
@@ -64,3 +67,16 @@ print("\nPrediction Example:")
 sample_text = "The president has announced a new policy to tackle climate change."
 print("News:", sample_text)
 print("Prediction:", predict_news(sample_text))
+
+
+import joblib
+
+# Save model and vectorizer
+joblib.dump(model, 'logistic_model.pkl')
+joblib.dump(vectorizer, 'tfidf_vectorizer.pkl')
+
+# Download them to your computer
+from google.colab import files
+files.download('logistic_model.pkl')
+files.download('tfidf_vectorizer.pkl')
+
